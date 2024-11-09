@@ -28,7 +28,7 @@ fun JobItem(job: Job) {
             .fillMaxWidth()
             .padding(vertical = 8.dp)
     ) {
-        Text(job.title, style = MaterialTheme.typography.headlineMedium)
+        Text(job.title, style = MaterialTheme.typography.titleLarge)
         Text(
             "Posted by ${job.by} on ${formatTime(job.time * 1000)}",
             style = MaterialTheme.typography.bodyMedium
@@ -42,7 +42,7 @@ fun JobItem(job: Job) {
             Text(
                 job.text,
                 color = MaterialTheme.colorScheme.secondary,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodySmall
             )
         }
         HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
