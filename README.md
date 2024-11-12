@@ -3,7 +3,7 @@
 
 ![](./icon.png)
 
-Hacker News Jobs Android App is an Android application that allows users to browse, search, and save job listings from the Hacker News job board. This app is built using Jetpack Compose for the UI, with local data storage managed by Room, and network data fetched via Retrofit.
+Hacker News Jobs Android App is an Android application that allows users to browse, and search job listings from the Hacker News job board. This app is built using Jetpack Compose for the UI, with local data storage managed by Room, and network data fetched via Retrofit.
 
 - [Hacker News Jobs Android App](#hacker-news-jobs-android-app)
   - [Features](#features)
@@ -33,7 +33,6 @@ Hacker News Jobs Android App is an Android application that allows users to brow
 - **Room Database**: Used for local data persistence.
 - **Retrofit**: Handles network requests to fetch job data.
 - **Jsoup**: Used to retrieve webpage content from job URLs.
-- **Coil**: Loads images in the job list view.
 
 ## Installation and Usage
 
