@@ -15,7 +15,6 @@ Hacker News Jobs Android App is an Android application that allows users to brow
   - [Main Files and Code Structure](#main-files-and-code-structure)
   - [Build Tools and Dependencies](#build-tools-and-dependencies)
   - [Usage](#usage)
-    - [Explanation](#explanation)
   - [Illustration](#illustration)
 
 
@@ -73,17 +72,6 @@ Ensure all dependencies are correctly configured in the root `build.gradle` file
 1. **Search Jobs**: Type job keywords into the search bar, press the search icon or hit enter to see matching jobs.
 2. **Fetch Data**: Click the refresh button to fetch the latest jobs from Hacker News and store them locally.
 3. **View Job Webpages**: Click on the job URL to open the corresponding webpage in the browser.
-
-### Explanation
-
-- **Features**: Lists the core features of the application.
-- **Tech Stack**: Details the main technologies and libraries used.
-- **Installation and Usage**: Provides steps for cloning, configuring, and running the project.
-- **Main Files and Code Structure**: Describes the key files and their roles in the project.
-- **Usage**: Guides users on how to perform key actions in the app, like searching and fetching data.
-- **License**: Specifies the project's licensing terms.
-
-Make sure to replace any placeholder links or project details with actual ones specific to your project.
 
 ## Illustration 
 ![](./README/illustration.png)
