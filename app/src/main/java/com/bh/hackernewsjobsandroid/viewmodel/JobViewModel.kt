@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class JobViewModel(private val repository: JobRepository) : ViewModel() {
-    private val _jobsList = MutableStateFlow<List<Job>>(emptyList())
+    val _jobsList = MutableStateFlow<List<Job>>(emptyList())
     val jobsList = _jobsList.asStateFlow()
 
     val isFetching = MutableStateFlow(false)

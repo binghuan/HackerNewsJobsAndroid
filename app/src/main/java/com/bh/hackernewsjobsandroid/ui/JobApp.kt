@@ -27,8 +27,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.bh.hackernewsjobsandroid.data.local.Job
+import com.bh.hackernewsjobsandroid.data.local.JobDao
+import com.bh.hackernewsjobsandroid.data.remote.JobApiService
+import com.bh.hackernewsjobsandroid.data.remote.JobDto
+import com.bh.hackernewsjobsandroid.data.repository.JobRepository
 import com.bh.hackernewsjobsandroid.viewmodel.JobViewModel
+import retrofit2.Response
 
 @Composable
 fun JobApp(viewModel: JobViewModel) {
@@ -80,8 +87,38 @@ fun JobApp(viewModel: JobViewModel) {
 
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(jobsList) { job ->
-                JobItem(job)
+                JobItemView(job)
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewJobApp() {
+    val dummyJobs = listOf(
+        Job(id = 1, title = "Android Developer", url = "https://example.com", score = 100, by = "user", time = System.currentTimeMillis() / 1000, text = "Job description", webpageContent = ""),
+        Job(id = 2, title = "Backend Developer", url = "https://example.com", score = 100, by = "user", time = System.currentTimeMillis() / 1000, text = "Job description", webpageContent = "")
+    )
+    val dummyJobDao = object : JobDao {
+        override suspend fun insert(job: Job) {
+            TODO("Not yet implemented")
+        }
+
+        override suspend fun getAllJobs() = dummyJobs
+        override suspend fun searchJobs(keyword: String) = dummyJobs.filter { it.title.contains(keyword, true) }
+    }
+    val dummyApiService = object : JobApiService {
+        override suspend fun getJobStories(): Response<List<Int>> {
+            return Response.success(listOf(1, 2))
+        }
+        override suspend fun getJobDetails(jobId: Int): Response<JobDto> {
+            return Response.success(JobDto(id = 1, title = "Android Developer", url = "https://example.com", score = 100, by = "user", time = System.currentTimeMillis() / 1000, text = "Job description", webpageContent = ""))
+        }
+    }
+    val dummyRepository = JobRepository(dummyJobDao, dummyApiService)
+    val dummyViewModel = JobViewModel(dummyRepository).apply {
+        _jobsList.value = dummyJobs
+    }
+    JobApp(viewModel = dummyViewModel)
 }
